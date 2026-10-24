@@ -1,4 +1,4 @@
-# ReverseIt — Web edition (V3)
+# ReverseIt — Web edition 
 
 Open-source web platform that **reads websites, apps and programs, shows how they are built, and helps you
 rebuild your own original version.** A public landing site, full documentation, a builder page, and a dashboard
