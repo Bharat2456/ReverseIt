@@ -1,0 +1,8 @@
+{
+  "name": "reverseit-v3-source",
+  "private": true,
+  "type": "module",
+  "scripts": { "build": "node build.mjs" },
+  "devDependencies": { "esbuild": "^0.25.0", "react": "^19.0.0", "react-dom": "^19.0.0" },
+  "reverseit": { "entry": "entries/v3.tsx", "ui": "../public", "api": "../api" }
+}

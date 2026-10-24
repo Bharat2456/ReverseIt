@@ -1,0 +1,8 @@
+{
+  "name": "reverseit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ReverseIt web edition: reads websites, apps and programs, shows how they are built, and helps rebuild an original version. Static UI in public/, stateless serverless API in api/.",
+  "license": "MIT",
+  "engines": { "node": ">=20" }
+}
