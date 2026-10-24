@@ -20,7 +20,7 @@ export function PublicLayout({ children }: { children?: any }) {
       {children}
       <footer className="footer">
         <span><Logo size={26} withText /></span>
-        <span>Open source · MIT · built on REA (MIT) · no accounts, bring your own AI key</span>
+        <span>Open source · MIT · no accounts, bring your own AI key</span>
         <span><Link to="/docs">Docs</Link> · <Link to="/builder">Builder</Link></span>
       </footer>
     </div>

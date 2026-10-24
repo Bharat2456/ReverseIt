@@ -30,7 +30,7 @@ const FEATURES = [
   ['graph', 'See the architecture', 'A clear map of the parts and how they connect, with honest coverage and a list of what could not be seen.'],
   ['doc', 'Blueprint in plain words', 'AI turns the evidence into a report anyone can read: what it is, how it works, risks and a rebuild plan.'],
   ['cube', 'Build your own version', 'Generate an original, runnable clone starter, an API with mock server, or a full design system, as a zip.'],
-  ['key', 'Any AI, your key', 'Paste a key from any provider. ReverseIt works out where it belongs. Local models too in the localhost edition.'],
+  ['key', 'Any AI, your key', 'Paste a key from any provider. ReverseIt works out where it belongs.'],
 ] as const;
 
 const SHOTS = [

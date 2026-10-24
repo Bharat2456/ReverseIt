@@ -17,7 +17,7 @@ export function DocsBody() {
       <div>
         <section id="doc-what"><h2>What ReverseIt is</h2>
           <p>ReverseIt helps you <strong>understand how an app, website or program is built</strong>, then rebuild your own original version. You do not need to be technical: you point it at something, it reads everything it legally can, draws a map of how the parts connect, and an AI model turns that evidence into a plain-language Blueprint and a runnable clone starter.</p>
-          <p>It is built on the open-source <strong>REA</strong> reverse-engineering evidence model (MIT). Every result is <em>evidence</em>: what was seen, how complete the check was, and — just as important — what could <em>not</em> be seen.</p>
+          <p>{p.version === 'v3' ? '' : <>It is built on the open-source <strong>REA</strong> reverse-engineering evidence model (MIT). </>}Every result is <em>evidence</em>: what was seen, how complete the check was, and — just as important — what could <em>not</em> be seen.</p>
         </section>
         <section id="doc-start"><h2>Quick start</h2>
           <ol>
@@ -56,12 +56,12 @@ export function DocsBody() {
           {needsKey ? <div className="notice">An AI API key is <strong>required</strong> for the Blueprint and Build Lab. Everything else works without one. ReverseIt does not provide AI itself, so you bring your own key and pay your provider directly (many have free tiers).</div> : <div className="notice info">This edition uses the built-in AI of the chat it runs in, so no key is needed. The self-hosted editions (localhost and the deployable site) need your own API key.</div>}
           <h3>Any provider works</h3>
           <p>Paste a key and press <strong>Detect &amp; verify</strong>. ReverseIt recognises key formats, checks the matching provider by listing its models, and lets you pick one. If your provider is unknown or self-hosted, choose “not on the list”, enter its base URL and the format it speaks (OpenAI-style, Anthropic-style or Gemini-style).</p>
-          <div>{cloud.map((k) => <span className="tag" key={k.id}>{k.label}</span>)}<span className="tag orange">Ollama / LM Studio (localhost edition)</span></div>
+          <div>{cloud.map((k) => <span className="tag" key={k.id}>{k.label}</span>)}{p.version !== 'v3' && <span className="tag orange">Ollama / LM Studio (localhost edition)</span>}</div>
           <h3>Where to get a key</h3>
           <ul>{cloud.slice(0, 8).map((k) => <li key={k.id}>{k.label}: <a href={k.consoleUrl} target="_blank" rel="noopener noreferrer">{k.consoleUrl.replace(/^https?:\/\//, '')}</a></li>)}</ul>
           <h3>How your key is handled</h3>
-          <p>It is stored only in your browser. It travels with each AI request to ReverseIt's server, which forwards it to the provider and forgets it: no database, no logging. For maximum control run the localhost edition on your own machine. Never share a key you cannot revoke, and set a spending limit with your provider.</p>
-          <p>Local models (Ollama, LM Studio) only work in the localhost edition, because a website on the internet cannot reach a program on your computer.</p>
+          <p>It is stored only in your browser. It travels with each AI request to ReverseIt's server, which forwards it to the provider and forgets it: no database, no logging. {p.version === 'v3' ? 'For maximum control, host your own copy.' : 'For maximum control run the localhost edition on your own machine.'} Never share a key you cannot revoke, and set a spending limit with your provider.</p>
+          {p.version === 'v3' ? <p>Models running on your own computer (Ollama, LM Studio) cannot be reached from a website, so use a hosted provider here.</p> : <p>Local models (Ollama, LM Studio) only work in the localhost edition, because a website on the internet cannot reach a program on your computer.</p>}
         </section>
         <section id="doc-lab"><h2>Blueprint &amp; Build Lab</h2>
           <ul>
@@ -86,7 +86,7 @@ export function DocsBody() {
           <ul>
             <li>ReverseIt reads and measures; it does <strong>not run</strong> the target. Anything built at run time is invisible.</li>
             <li>It cannot see server code, databases or anything behind a login on a website.</li>
-            <li>Native programs get a structural read (layout, imports, strings). <strong>Decompiling</strong> to readable source needs a professional engine (Ghidra, IDA, Hopper, JADX). {p.version === 'v2' ? 'The localhost edition can use REA with those engines if you install them.' : 'The localhost edition can use REA with those engines if you install them on your own computer.'}</li>
+            <li>Native programs get a structural read (layout, imports, strings). <strong>Decompiling</strong> to readable source needs a professional engine (Ghidra, IDA, Hopper, JADX). {p.version === 'v3' ? 'Run those tools on your own computer alongside ReverseIt for that depth.' : p.version === 'v2' ? 'The localhost edition can use REA with those engines if you install them.' : 'The localhost edition can use REA with those engines if you install them on your own computer.'}</li>
             <li>Minified or obfuscated code limits what can be named. Source maps, when published, restore a lot.</li>
             <li>Very large files are limited by your browser's memory.</li>
             <li>AI output may be wrong. Check it against the evidence.</li>
@@ -96,7 +96,7 @@ export function DocsBody() {
         <section id="doc-run"><h2>Running &amp; deploying</h2>
           {p.version === 'v3' ? (
             <>
-              <p>The site you are on is the deployable edition. To host your own copy:</p>
+              <p>To host your own copy of ReverseIt:</p>
               <ol><li>Fork or download the repository from GitHub.</li><li>On <a href="https://vercel.com/new" target="_blank" rel="noopener noreferrer">vercel.com/new</a> import the repository. No build settings or environment variables are needed.</li><li>Press Deploy. There is no login and no database.</li></ol>
               <p>The server functions (<code>/api/ai/*</code>, <code>/api/site/analyze</code>) are stateless proxies. Visitors bring their own API key.</p>
             </>
@@ -118,7 +118,7 @@ export function DocsBody() {
           <h3>Why can't it read my site?</h3><p>Some sites block automated visitors or need JavaScript to show content. Try saving the page or exporting a HAR capture and uploading that.</p>
         </section>
         <section id="doc-credits"><h2>Credits &amp; licence</h2>
-          <p>ReverseIt is open source under the MIT licence. It is built on the REA project by morluto (MIT, © 2026) and keeps its licence notices. Made by <Link to={p.hasLanding ? '/builder' : appPath('/docs')}>Bharat Wagh</Link>.</p>
+          <p>ReverseIt is open source under the MIT licence.{p.version === 'v3' ? '' : ' It is built on the REA project by morluto (MIT, © 2026) and keeps its licence notices.'} Made by <Link to={p.hasLanding ? '/builder' : appPath('/docs')}>Bharat Wagh</Link>.</p>
         </section>
       </div>
     </div>

@@ -44,7 +44,7 @@ export function AppShell() {
         {nav.map((n) => <Link key={n.to} to={appPath(n.to)} className={'navlink' + (n.match(rel) ? ' on' : '')}><Icon name={n.icon} />{n.label}</Link>)}
         <div className="sp" />
         {p.hasLanding && <Link to="/" className="navlink"><Icon name="globe" />Public site</Link>}
-        <div className="sidefoot">{p.edition}<br />Open source · MIT<br />Built on REA (MIT)</div>
+        {p.version !== 'v3' && <div className="sidefoot">{p.edition}<br />Open source · MIT<br />Built on REA (MIT)</div>}
       </aside>
       <div>
         <div className="topbar"><button className="btn sm ghost" onClick={() => setOpen(true)} aria-label="Open menu"><Icon name="menu" /></button><Logo size={30} withText /></div>

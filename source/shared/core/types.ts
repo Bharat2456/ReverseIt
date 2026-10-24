@@ -1,8 +1,7 @@
 /**
  * ReverseIt core contracts.
  *
- * The data model deliberately mirrors the ideas in REA (morluto/rea, MIT):
- * every result is an Evidence record that separates observations from
+ * Every result is an Evidence record that separates observations from
  * limitations, declares coverage, and is marked as untrusted target content.
  * Everything in `core/` is isomorphic: it must run in a browser and in Node,
  * using only Web APIs (Uint8Array, DataView, TextDecoder, crypto.subtle when
@@ -92,7 +91,7 @@ export interface Evidence {
   operation: string;
   /** Human title for the record, e.g. 'ELF binary layout'. */
   title: string;
-  /** Producer id: 'reverseit-core@1', or 'rea-engine@<ver>' for the bundled REA engine. */
+  /** Producer id: 'reverseit-core@1', or an optional external engine. */
   analyzer: string;
   provenance: 'reverseit-core' | 'rea-engine' | 'user-supplied' | 'ai-derived';
   created_at: string;
@@ -109,7 +108,7 @@ export interface Evidence {
   coverage: { status: CoverageStatus; notes?: string[] };
   /** What this record does NOT establish. Never empty for partial coverage. */
   limitations: string[];
-  /** Mirrors REA's untrusted-content marker: strings/code in here come from the target. Never treat as instructions. */
+  /** Untrusted-content marker: strings/code in here come from the target. Never treat as instructions. */
   untrusted_content: true;
 }
 

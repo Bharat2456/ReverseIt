@@ -1,65 +1,143 @@
-# ReverseIt — Web edition 
+<div align="center">
 
-Open-source web platform that **reads websites, apps and programs, shows how they are built, and helps you
-rebuild your own original version.** A public landing site, full documentation, a builder page, and a dashboard
-with a left navigation bar. No accounts, no database: every visitor brings their own AI API key.
+<img src="public/favicon.svg" width="96" alt="ReverseIt logo" />
+
+# R E V E R S E I T
+
+**Take it _apart_. Build it _yours_.**
+
+ReverseIt reads websites, apps and programs, shows you how they are built,<br/>
+and helps you rebuild your own original version — no technical knowledge needed.
+
+<br/>
+
+[**⚡ Open the Dashboard**](https://reverseit.vercel.app/app) &nbsp;·&nbsp; [**Live site**](https://reverseit.vercel.app/) &nbsp;·&nbsp; [**Read the docs**](https://reverseit.vercel.app/docs)
+
+`Open source` &nbsp; `No accounts` &nbsp; `Bring your own AI` &nbsp; `MIT`
+
+<br/>
+
+<a href="https://reverseit.vercel.app/"><img src="public/assets/shots/dashboard.png" alt="ReverseIt command centre" width="900" /></a>
+
+</div>
+
+<br/>
+
+> **Needs an AI API key** for the Blueprint and Build Lab — from *any* provider. Analysis itself works without one.
+
+---
+
+## ▌ HOW IT WORKS &nbsp;`3 STEPS`
+
+| | | |
+|:--|:--|:--|
+| **01 · Point it at something** | **02 · Read the evidence** | **03 · Build your own** |
+| A website, an app file, some code, or a network capture. Confirm you are allowed to study it. | ReverseIt inspects it and draws the architecture, listing findings, coverage and unknowns. | AI writes the Blueprint and generates an original clone starter you can download and run. |
+
+---
+
+## ▌ WHAT IT BUILDS
+
+*Everything between “how does this work?” and “I built it”.*
+
+| Module | What it does |
+|---|---|
+| 🌐 **Read any website** | Enter an address. ReverseIt reads the public page, scripts and styles, finds API calls, technologies, fonts and colours — and recovers original sources from public source maps. |
+| 📦 **Open apps and files** | Windows, Linux, macOS, Android, Electron, WebAssembly, archives and databases — read for structure, libraries and behaviour. |
+| 🕸️ **See the architecture** | A clear map of the parts and how they connect, with honest coverage and a list of what could not be seen. |
+| 📄 **Blueprint in plain words** | AI turns the evidence into a report anyone can read: what it is, how it works, risks and a rebuild plan. |
+| 🧱 **Build your own version** | Generate an original, runnable clone starter, an API with mock server, or a full design system — as a zip. |
+| 🔑 **Any AI, your key** | Paste a key from any provider. ReverseIt works out where it belongs. |
+
+---
+
+## ▌ SHOWCASE &nbsp;`SEE IT WORKING`
+
+<table>
+<tr>
+<td width="50%"><img src="public/assets/shots/new.png" alt="Start an investigation" /><br/><sub><b>Start an investigation</b></sub></td>
+<td width="50%"><img src="public/assets/shots/overview.png" alt="Overview and findings" /><br/><sub><b>Overview and findings</b></sub></td>
+</tr>
+<tr>
+<td><img src="public/assets/shots/architecture.png" alt="Architecture map" /><br/><sub><b>Architecture map</b></sub></td>
+<td><img src="public/assets/shots/blueprint.png" alt="AI Blueprint" /><br/><sub><b>AI Blueprint</b></sub></td>
+</tr>
+<tr>
+<td colspan="2"><img src="public/assets/shots/connect.png" alt="Connect any AI key" /><br/><sub><b>Connect any AI key</b></sub></td>
+</tr>
+</table>
+
+---
+
+## ▌ AI KEY &nbsp;`REQUIRED FOR AI FEATURES`
+
+ReverseIt has no accounts and no hidden AI bill. For the Blueprint and Build Lab you connect **your own** API key from **any** provider — OpenAI, Anthropic, Google, OpenRouter, Groq, Mistral, DeepSeek, xAI, Together, Fireworks, Perplexity, Cerebras, SambaNova, NVIDIA, Cohere, Hugging Face, GitHub Models, Moonshot, Zhipu, Qwen, SiliconFlow, or your own server through a custom base URL.
+
+Anything that speaks the OpenAI, Anthropic or Gemini API format works. The key lives only in your browser and travels with each request; it is never stored or logged. A key is only sent to the provider whose key format matches, unless you explicitly choose *try every provider*.
+
+## ▌ HONEST BY DESIGN &nbsp;`LIMITS`
+
+Every result says how complete it is and what it could not see.
+
+- ReverseIt **reads and measures; it never runs** the target.
+- It cannot see server code, databases or anything behind a login.
+- Native programs get a structural read (layout, imports, strings). Full decompiling needs a dedicated tool such as Ghidra, IDA or Hopper.
+- Minified code limits what can be named; published source maps restore a lot.
+- AI output can be wrong — check it against the evidence.
+- A clone reproduces observable behaviour and design, not hidden internals or data.
+
+**Use it responsibly.** Learn, audit software you own, do authorised security and interoperability work, and build original products. Do not use it to bypass licences or copy protection, to cheat, to access systems without permission, or to copy someone's protected code, text, images or brand.
+
+---
+
+## ▌ DEPLOY YOUR OWN &nbsp;`3 STEPS`
+
+1. Upload this repository to GitHub.
+2. Import it at [vercel.com/new](https://vercel.com/new). Leave every setting at its default — no build command, no environment variables.
+3. Press **Deploy**. Landing page at `/`, the platform at `/app`.
+
+No login, no database. The server functions are stateless proxies and every visitor brings their own key.
 
 ```
-public/        static site + dashboard (prebuilt, no build step needed)
-api/           stateless serverless functions (prebuilt Node.js, no dependencies)
-source/        full source code (React + TypeScript) and the build script
-vercel.json    routing, 60 s function limit, security headers (CSP)
+public/        the website and dashboard (prebuilt)
+api/           stateless serverless functions
+source/        full source code and build script
+vercel.json    routing, 60 s function limit, security headers
 ```
 
-## Deploy in 3 steps (GitHub → Vercel)
-
-1. Create a new GitHub repository and upload **the contents of this folder** (the folder that contains `vercel.json`).
-2. On <https://vercel.com/new> import that repository. Leave every setting at its default: no build command, no output
-   directory, no environment variables.
-3. Press **Deploy**. Open the URL. The landing page is `/`, the platform is behind the **Dashboard** button (`/app`).
-
-Nothing else is required. There is no login and nothing is stored on the server.
-
-## How it works
-
-| Part | Where it runs | What it does |
-|---|---|---|
-| Analysis of uploaded files (exe, apk, asar, zip, wasm, js, har…) | the visitor's browser | files never leave the device |
-| `POST /api/site/analyze` | Vercel function | reads a public website (page, scripts, styles, source maps) and streams progress |
-| `POST /api/ai/detect · models · test · chat` | Vercel function | forwards a request to **any** AI provider using the visitor's key; the key is never stored or logged |
-| Investigations | the visitor's browser (IndexedDB) | private to that browser |
-
-AI providers: format-driven, so anything speaking the OpenAI, Anthropic or Gemini API works (OpenAI, Anthropic, Google,
-OpenRouter, Groq, Mistral, DeepSeek, xAI, Together, Fireworks, Perplexity, Cerebras, SambaNova, NVIDIA, Cohere,
-Hugging Face, GitHub Models, Moonshot, Zhipu, Qwen, SiliconFlow, and any custom base URL).
-**Keys are only sent to a vendor whose key format matches** unless the visitor explicitly chooses "try every provider".
-
-## Limits you should know
-
-- Vercel's free plan caps function time (this project asks for 60 s). Very large sites may be only partly read.
-- The server **cannot** reach private networks or `localhost` (blocked on purpose), so **local models (Ollama, LM Studio)
-  only work in the localhost edition (V2)**.
-- Native programs get a structural read (layout, imports, strings). Decompiling needs Ghidra/IDA/Hopper (see V2 + REA).
-- The site analyzer reads what is public and does not run JavaScript, so client-rendered content and anything behind login is invisible.
-- The site analyzer and AI proxy are open to anyone who visits your deployment (no auth, by design). Per-IP rate limiting is
-  best-effort on serverless. If you see abuse, enable Vercel Firewall rate limits. Your own AI keys are never used.
-- This package was tested with a local simulation of Vercel (static files, function routing, headers/CSP, request bodies),
-  real browser runs, and mock AI providers. It was **not** deployed to a live Vercel account from the build environment.
-  Real provider calls and real website fetches over the internet were not possible in that environment.
-
-## Rebuild from source (optional)
+Rebuild from source (optional):
 
 ```bash
 cd source
 npm install
-npm run build      # writes ../public/app.js, ../public/app.css and ../api/*.js
+npm run build     # writes ../public and ../api
 ```
 
-## Add your screenshots / motion
+> Heads-up for hosting: the free Vercel tier limits function time, so very large websites may be only partly read. The website reader and AI proxy are open to your visitors by design (no auth) — enable Vercel's rate limiting if you see abuse.
 
-The landing page loads `public/assets/shots/*.png` and `public/assets/tour.webm|mp4`. Replace them any time (same names).
+---
 
-## Licence
+## ▌ THE BUILDER
 
-MIT (see `LICENSE`). Built on the ideas of REA by morluto (MIT) — see `THIRD_PARTY_NOTICES.md`.
-Use ReverseIt only on things you own or may study; do not use it to bypass licences or copy protection, or to copy protected code or assets.
+<table>
+<tr>
+<td width="140"><img src="public/assets/portrait.jpg" width="120" alt="Bharat Wagh" /></td>
+<td>
+
+**Bharat Wagh** · 21<br/>
+Curious builder, always open to new ideas and innovation. Currently a Computer Engineering student at TSSM's Padmabhooshan Vasantdada Patil Institute of Technology, Bavdhan, Pune — passionate about tech and how it works.<br/>
+**Freelance:** need something built? Connect on LinkedIn.
+
+[LinkedIn](https://www.linkedin.com/in/bharat-wagh-96b3082a8) · [GitHub](https://github.com/Bharat2456) · [Instagram](https://www.instagram.com/doppelganger.bharat) · [X](https://x.com/BharatWagh1010)
+
+</td>
+</tr>
+</table>
+
+---
+
+<div align="center">
+
+**[reverseit.vercel.app](https://reverseit.vercel.app/)** · MIT License · © Bharat Wagh
+
+</div>

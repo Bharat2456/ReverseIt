@@ -79,7 +79,7 @@ export async function analyzeDotnet(ctx: ByteCtx): Promise<AnalysisPart> {
           findings: obfuscated ? [finding('Obfuscated names', 'notice', 'Most identifiers are 1–2 characters or unreadable, which hides the program structure.')] : [],
           graph: { nodes: [{ id: root, label: ctx.target.name, group: 'module', weight: 8 }], edges: [] },
           coverage: { status: 'partial', notes: ['Names were read from the metadata string heap; the metadata tables (which type owns which method) and the IL code were not decoded.'] },
-          limitations: ['Use ILSpy/dnSpy or REA\'s managed-code commands (local engine) to decompile method bodies.'],
+          limitations: ['Use ILSpy or dnSpy to decompile method bodies.'],
         }),
       ],
     };

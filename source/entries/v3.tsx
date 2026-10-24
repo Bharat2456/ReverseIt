@@ -5,7 +5,7 @@ import { apiAnalyzeSite, apiChat } from '../shared/ui/lib/aiClient';
 
 const platform: Platform = {
   version: 'v3',
-  edition: 'Web edition (V3)',
+  edition: 'Web platform',
   routerMode: 'history',
   hasLanding: true,
   appBase: '/app',
